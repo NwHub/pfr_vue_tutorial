@@ -1,5 +1,5 @@
 <template>
   <div class="text-xs-center display-3 font-weight-medium">
-    Index
+    Page2
   </div>
 </template>
