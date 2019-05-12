@@ -1,5 +1,5 @@
 <template>
-  <dev>
+  <div>
     <p class="text-xs-center display-3 font-weight-medium">
       Todo
     </p>
@@ -13,7 +13,7 @@
           </v-subheader>
 
           <v-list two-line>
-            <dev v-for="(todoData, index) in todoDatas">
+            <div v-for="(todoData, index) in todoDatas">
 
               <v-divider></v-divider>
 
@@ -28,13 +28,13 @@
                 </v-list-tile-content>
               </v-list-tile>
 
-            </dev>
+            </div>
 
           </v-list>
         </v-card>
       </v-flex>
     </v-layout>
-  </dev>
+  </div>
 </template>
 
 <script>
