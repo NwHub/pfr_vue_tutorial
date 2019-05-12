@@ -15,7 +15,7 @@ export const getters = {
     })
     return todos
 
-    // 書き方もできる
+    // こういう書き方もできる
     // return state.list.filter(x => (x.content).indexOf(text) >= 0))
   }
 }
