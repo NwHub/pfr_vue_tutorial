@@ -1,22 +1,26 @@
 <template>
   <section class="container">
     <div>
-      <h2>
-        Write to Firestore.
-      </h2>
-      <div>
-        <input name="inputText" v-model="inputText" />
-        <button @click="writeToFirestore">書き込み</button>
-      </div>
+      <p class="title font-weight-medium">Write to Firestore.</p>
+      <v-layout row wrap>
+        <v-flex sm5>
+          <v-text-field label="入力" outline name="inputText" v-model="inputText" />
+        </v-flex>
+        <v-flex>
+          <v-btn large @click="writeToFirestore">書き込み</v-btn>
+        </v-flex>
+      </v-layout>
     </div>
     <div>
-      <h2>
-        Read from Firestore.
-      </h2>
-      <div>
-        <p>{{ readText }}</p>
-        <button @click="readFromFirestore">読み込み</button>
-      </div>
+      <p class="title font-weight-medium">Read from Firestore.</p>
+      <v-layout row wrap>
+        <v-flex sm5>
+          <p class="display-3 font-weight-medium">{{ readText }}</p>
+        </v-flex>
+        <v-flex>
+          <v-btn large @click="readFromFirestore">読み込み</v-btn>
+        </v-flex>
+      </v-layout>
     </div>
   </section>
 </template>
