@@ -51,7 +51,6 @@
               </v-list-tile>
 
             </div>
-
           </v-list>
         </v-card>
       </v-flex>
@@ -67,24 +66,16 @@ export default {
     return {
       inputContent: '',
       findContent: '',
-      list: [],
     }
   },
-  async asyncData({app, params, error}) {
+  async asyncData(context) {
     let snap
     try {
       snap = await TodoRepository.get()
     } catch (e) {
       console.error(e)
     }
-    // let todoList
-    // if (!findContent) {
-    //   todoList = snap.data().list
-    // } else {
-    //   todoList = snap.data().list.filter(function(x, index) {
-    //     if ((x.content).indexOf(this.findContent) >= 0) return true;
-    //   })
-    // }
+
     return {
       list: snap.data().list
     }
@@ -99,7 +90,7 @@ export default {
   },
 
   methods: {
-    async addTodo() {
+    addTodo() {
       var d = new Date();
       var fmt = d.getFullYear()
                   + '-' + ('00' + (d.getMonth() + 1)).slice(-2)
@@ -113,24 +104,24 @@ export default {
           done: false,
       })
 
-      let document = { "list" : this.list }
-      try {
-        this.inputContent = await TodoRepository.set(document)
-      } catch (e) {
-        console.error(e)
-      }
       this.inputContent = '';
+      this.setTodo()
     },
-    async doneTodo (todo) {
-      this.list.splice(this.list.indexOf(todo), 1)
 
+    doneTodo (todo) {
+      this.list.splice(this.list.indexOf(todo), 1)
+      this.setTodo()
+    },
+
+    async setTodo() {
       let document = { "list" : this.list }
+
       try {
-        this.inputContent = await TodoRepository.set(document)
+        await TodoRepository.set(document)
       } catch (e) {
         console.error(e)
       }
-    }
+    },
   }
 }
 </script>
