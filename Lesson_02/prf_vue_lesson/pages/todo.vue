@@ -1,10 +1,8 @@
 <template>
-  <div>
-    <p class="text-xs-center display-3 font-weight-medium">
-      Todo
-    </p>
+  <div class="text-xs-center">
+    <h1 class="display-3 font-weight-medium">Todo</h1>
 
-    <p class="text-xs-center">
+    <p>
       <v-btn large color="yellow accent-1" @click="execIncrement">Count Up</v-btn>
     </p>
 
@@ -26,29 +24,23 @@
     <v-layout row>
       <v-flex xs12 sm6 offset-sm3>
         <v-card>
-
-          <v-subheader>
-            Your Life
-          </v-subheader>
+          <v-subheader>Your Life</v-subheader>
 
           <v-list two-line>
-            <div v-for="(todoData, index) in todoDatas">
-
+            <div v-for="(todoData, index) in todoDatas" :key="index">
               <v-divider></v-divider>
 
               <v-list-tile>
-                <v-list-tile-avatar>
-                  {{ index }}
-                </v-list-tile-avatar>
+                <v-list-tile-avatar>{{ index }}</v-list-tile-avatar>
 
                 <v-list-tile-content>
-                  <v-list-tile-title><p class="title">{{ todoData.content }}</p></v-list-tile-title>
+                  <v-list-tile-title>
+                    <p class="title">{{ todoData.content }}</p>
+                  </v-list-tile-title>
                   <v-list-tile-sub-title>{{ todoData.created }}</v-list-tile-sub-title>
                 </v-list-tile-content>
               </v-list-tile>
-
             </div>
-
           </v-list>
         </v-card>
       </v-flex>
@@ -59,20 +51,20 @@
 <script>
 export default {
   computed: {
-    nomal () {
-      return this.$store.state.counter
+    nomal() {
+      return this.$store.state.counter;
     },
-    plusOne () {
-      return this.$store.getters.counterPlusOne
+    plusOne() {
+      return this.$store.getters.counterPlusOne;
     },
-    todoDatas () {
-      return this.$store.state.todo.list
+    todoDatas() {
+      return this.$store.state.todo.list;
     }
   },
   methods: {
-    execIncrement () {
-      this.$store.commit('increment')
+    execIncrement() {
+      this.$store.commit("increment");
     }
   }
-}
+};
 </script>

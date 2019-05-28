@@ -1,9 +1,7 @@
 <template>
-  <div>
-    <p class="text-xs-center display-3 font-weight-medium">Page2</p>
-    <div class="text-xs-center">
-      <v-btn large color="yellow accent-1" @click="execIncrement_a">Count Up</v-btn>
-    </div>
+  <div class="text-xs-center">
+    <h1 class="display-3 font-weight-medium">Page2</h1>
+    <v-btn large color="yellow accent-1" @click="execIncrement">Count Up</v-btn>
     <v-container grid-list-xl>
       <v-layout row justify-center>
         <v-flex xs3>
@@ -24,18 +22,17 @@
 <script>
 export default {
   computed: {
-    // 関数名は同じ名前にしなくても良い
-    nomal_a () {
-      return this.$store.state.counter
+    nomal_a() {
+      return this.$store.state.counter;
     },
-    plusOne_a () {
-      return this.$store.getters.counterPlusOne
+    plusOne_a() {
+      return this.$store.getters.counterPlusOne;
     }
   },
   methods: {
-    execIncrement_a () {
-      this.$store.commit('increment')
+    execIncrement() {
+      this.$store.commit("increment");
     }
   }
-}
+};
 </script>
